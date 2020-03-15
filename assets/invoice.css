@@ -1,0 +1,14 @@
+th.th_invoice {
+    background-color: #cc9933;
+    text-align: center;
+    height: 35px;
+}
+
+td.td_invoice {
+    padding: 8px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    font-size: 14px;
+}
+thead {background-color: #bf943d;
+    padding: 10px;}
