@@ -653,8 +653,7 @@ public function add_card_details(){
          if ($post_details[0]['receiver_id'] >0 ){
 
           $arr_where= ['userid' =>$post_details[0]['receiver_id']];
-          $device_info = $this->Webservice_model->get_where('user_device',$arr_where);
-          //$ressult['msg']=  $device_info[0]['device_id'];
+          $device_info = $this->Webservice_model->get_where('user_device',$arr_where);          
           $msg="You received a new card through GALA. Open the app to see who sent it!";
           $ressult['alarm_result']= $this->send_notification($msg,$device_info[0]['device_id']);
 
@@ -683,8 +682,8 @@ public function send_sms($msg,$phone){
 
   
   // Your Account SID and Auth Token from twilio.com/console
-   $account_sid = 'AC6a6a49d2551ac8802c19db8ba6570e06';
-   $auth_token = '9ac082c4db7a7409875ffb7fa3ea016e';
+   $account_sid = '';//SID key
+   $auth_token = '';//token
   
   // A Twilio number you own with SMS capabilities
    $twilio_number = "+19382382852";
@@ -703,7 +702,7 @@ public function send_sms($msg,$phone){
 }
 
 public function send_notification($msg,$player_id){
-  $app_id="ad8452ad-32d5-4492-b132-aa8b62ad08e3";// from onesignal
+  $app_id="xxxxxxxx-32d5-xxxxxxxx-xxxx-xxxxxxx";// from onesignal app id
   $content = array(
     "en" => $msg
   );
@@ -719,7 +718,7 @@ public function send_notification($msg,$player_id){
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-      'Authorization: Basic MWEzOWE0YTktY2UwOS00OTA0LTkwOWUtOTYxYmY3NmRhOWEx'));// from onesignal rest api key
+      'Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxx'));// from onesignal rest api key
 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -791,10 +790,7 @@ public function get_allreceivecard(){
             $user = $this->Webservice_model->get_where('users',$arr_get2);
             if($user)         
                 $user[0]['image']=SITE_URL.'uploads/images/'.$user[0]['image'];
-             $val['user']= $user [0];  
-             
-
-
+             $val['user']= $user [0];
 
               if( $val['image1'] !='')
                 $val['image1'] = SITE_URL.'uploads/images/'.$val['image1'];   
@@ -834,10 +830,7 @@ public function get_collectable_card(){
             $user = $this->Webservice_model->get_where('users',$arr_get2);
             if($user)         
                 $user[0]['image']=SITE_URL.'uploads/images/'.$user[0]['image'];
-             $val['user']= $user [0];  
-             
-
-
+             $val['user']= $user [0];
 
               if( $val['image1'] !='')
                 $val['image1'] = SITE_URL.'uploads/images/'.$val['image1'];   
@@ -985,11 +978,7 @@ public function update_card_details_image(){
         
         header('Content-type: application/json');
         echo json_encode($json);
-        }
-        
-
-	
-    
+  }
            
 /************* update_card_details_image_second function *************/
 public function update_card_details_image_second(){
@@ -1046,9 +1035,7 @@ public function update_card_details_image_second(){
         
         header('Content-type: application/json');
         echo json_encode($json);
-        }
-        
-        
+  }  
            
 /************* update_card_details_video function *************/
 public function update_card_details_video(){
@@ -1106,16 +1093,10 @@ public function update_card_details_video(){
         
         header('Content-type: application/json');
         echo json_encode($json);
-        }
-        
-	
-	
-	
+   }
 	
 	 /**************************************************payment************************************************/
-    public
-
-    function add_payment1()
+    public function add_payment1()
     {                     
           
       $arr_data = array(
@@ -1193,17 +1174,12 @@ public function update_card_details_video(){
 
          header('Content-type: application/json');
          echo json_encode($json);
-    }
+ }
 
 
 
 
-
-
-
-
-
-
+ 
 
   /************* strips_payment *************/
   public function strips_payment()
